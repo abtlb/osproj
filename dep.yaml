@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: dep1
+
+spec: 
+  selector: 
+    matchLabels:
+      label1: x
+  replicas: 3
+  template: 
+    metadata:
+      name: pod1
+      labels: 
+        label1: x
+    spec:
+      containers:
+        - image: abdallah76/osproj
+          name: cont1
+          ports: 
+            - containerPort: 80
+          imagePullPolicy: IfNotPresent
+          resources: 
+            limits: 
+              memory: "100Mi"
